@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "792118454399",
+    "project_id": "verilive-4c807",
+    "storage_bucket": "verilive-4c807.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792118454399:android:115792c1448606854d374a",
+        "android_client_info": {
+          "package_name": "com.reisa.verilive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792118454399-itdui69hui715ak036rj16t12v4ju07g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgf2F6F5N3CVenNllnbZ4neQYPSMA5Ihk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792118454399-itdui69hui715ak036rj16t12v4ju07g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
