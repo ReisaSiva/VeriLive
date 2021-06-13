@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary_dark"
+    android:background="@color/mainblue"
     tools:context=".DashboardActivity">
 
     <androidx.cardview.widget.CardView
@@ -53,7 +53,8 @@
                 android:layout_margin="30dp"
                 android:background="@drawable/button_style"
                 android:text="Join Room"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@color/mainblue"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

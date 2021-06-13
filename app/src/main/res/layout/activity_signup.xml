@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary_dark"
+    android:background="@color/mainblue"
     android:padding="10dp"
     tools:context=".SignupActivity">
 
@@ -68,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_style"
-                android:text="Already have an account" />
+                android:text="Already have an account"
+                app:backgroundTint="@color/mainblue"/>
 
             <Button
                 android:id="@+id/createBtn1"
