@@ -63,11 +63,11 @@ public class SignupActivity extends AppCompatActivity {
                                     .document().set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                                    startActivity(new Intent(SignupActivity.this, RegisterActivity.class));
                                 }
                             });
                             Toast.makeText(SignupActivity.this, "Success", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+                            startActivity(new Intent(SignupActivity.this, RegisterActivity.class));
                         } else {
                             Toast.makeText(SignupActivity.this, "Error Occured", Toast.LENGTH_SHORT).show();
                         }

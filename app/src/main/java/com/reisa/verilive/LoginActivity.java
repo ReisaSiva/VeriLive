@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         emailBox = findViewById(R.id.emailBox);
         passwordBox = findViewById(R.id.passwordBox);
         loginBTn = findViewById(R.id.loginBtn);
@@ -35,11 +34,9 @@ public class LoginActivity extends AppCompatActivity {
                 String email,password;
                 email =emailBox.getText().toString();
                 password =passwordBox.getText().toString();
-
                 auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if(task.isSuccessful()){
                             startActivity(new Intent(LoginActivity.this,DashboardActivity.class));
                             Toast.makeText(LoginActivity.this, "Logged In", Toast.LENGTH_SHORT).show();
