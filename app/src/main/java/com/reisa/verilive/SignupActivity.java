@@ -51,7 +51,7 @@ public class SignupActivity extends AppCompatActivity {
                 Semail = email.getText().toString();
                 Spass = password.getText().toString();
                 Sname = name.getText().toString();
-               final User user = new User();
+                final User user = new User();
                 user.setEmail(Semail);
                 user.setPassword(Spass);
                 user.setName(Sname);
