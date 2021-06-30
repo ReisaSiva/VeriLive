@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.reisa.verilive">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyAC2c9dXuqrmDlIMfESrOGHqw_usMiF0HQ" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,16 +23,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VeriLive">
-        <activity android:name=".DashboardActivity"></activity>
-        <activity android:name=".SignupActivity"
-            android:label="New Account"/>
-        <activity android:name=".LoginActivity"
-            android:label="Login"/>
+        <activity android:name=".loan.ListLoan"></activity>
+        <activity android:name=".loan.DetailLoan" />
+        <activity android:name=".loan.AddLoanActivity" />
+        <activity android:name=".home.HomeActivity" />
+        <activity android:name=".register.RegisterActivity" />
+        <activity android:name=".roomchat.DashboardActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".register.SignupActivity"
+            android:label="New Account" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="Login" />
+        <activity
+            android:name=".splash_screen.MainActivity"
             android:theme="@style/Theme.VeriLive.NoActionbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.media.action.IMAGE_CAPTURE" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary_dark"
-    tools:context=".LoginActivity">
+    android:background="@color/mainblue"
+    tools:context=".login.LoginActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:background="@drawable/textbox"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="numberPassword"
+                android:inputType="textPassword"
                 android:padding="10dp" />
 
             <Button
@@ -54,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_style"
-                android:text="Login" />
+                android:text="Login"
+                app:backgroundTint="@color/mainblue" />
 
             <Button
                 android:id="@+id/createBtn"

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_primary_dark"
-    tools:context=".DashboardActivity">
+    android:background="@color/mainblue"
+    tools:context=".roomchat.DashboardActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -53,7 +53,8 @@
                 android:layout_margin="30dp"
                 android:background="@drawable/button_style"
                 android:text="Join Room"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                app:backgroundTint="@color/mainblue"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -64,6 +65,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

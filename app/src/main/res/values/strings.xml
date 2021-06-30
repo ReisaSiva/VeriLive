@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">VeriLive</string>
+    <string name="Name">Name</string>
+    <string name="ID">ID Number</string>
+    <string name="Phone">Phone Number</string>
+    <string name="Birth">Birth Date</string>
+    <string name="Gender">Gender</string>
+    <string name="Address">Address</string>
+    <string name="City">City</string>
+    <string name="ZIP">ZIP Code</string>
+    <string name="IDc">ID Card</string>
+    <string name="CU">Close Up</string>
+    <string name="F1">Personal Information</string>
+    <string name="F2">Residence Address</string>
+    <string name="Back">Back</string>
+    <string name="Next">Next</string>
+    <string name="SV">Save</string>
+
 </resources>
