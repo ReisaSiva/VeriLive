@@ -1,11 +1,7 @@
 package com.reisa.verilive.roomchat.model;
 
 public class History {
-    String latitude, longitude, code;
-
-    public History(){
-
-    }
+    String latitude, longitude, code, loanID;
 
     public String getLatitude() {
         return latitude;
@@ -29,5 +25,13 @@ public class History {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getLoanID() {
+        return loanID;
+    }
+
+    public void setLoanID(String loanID) {
+        this.loanID = loanID;
     }
 }

@@ -25,6 +25,8 @@
         android:theme="@style/Theme.VeriLive">
         <activity android:name=".loan.ListLoan"></activity>
         <activity android:name=".loan.DetailLoan" />
+        <activity android:name=".loan.dummy.loan_item" />
+
         <activity android:name=".loan.AddLoanActivity" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".register.RegisterActivity" />

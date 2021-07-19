@@ -46,7 +46,7 @@
             android:textColor="#000000"
             tools:ignore="MissingConstraints" />
 
-        <EditText
+        <me.abhinay.input.CurrencyEditText
             android:id="@+id/jumlahField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,21 +115,22 @@
 
             <Button
                 android:id="@+id/backButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:text="@string/Back"
                 android:textColor="@color/mainblue" />
 
             <Button
                 android:id="@+id/saveButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="190dp"
+                android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:backgroundTint="@color/mainblue"
                 android:text="@string/SV"

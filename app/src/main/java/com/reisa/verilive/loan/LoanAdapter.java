@@ -1,15 +1,20 @@
 package com.reisa.verilive.loan;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.reisa.verilive.R;
 import com.reisa.verilive.loan.dummy.Loan;
+import com.reisa.verilive.roomchat.DashboardActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -33,10 +38,22 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Loan loan = loanList.get(position);
+        int convertAmount = Integer.valueOf(loan.getAmount());
         holder.textCode.setText("Code : " + loan.getCode());
-        holder.textAmount.setText("Amount : " + loan.getAmount());
+        holder.textAmount.setText("Amount : Rp" + String.format("%,d", convertAmount));
         holder.textDate.setText("Date : " + loan.getDate());
         holder.textStatus.setText("Status : " + loan.getStatus());
+
+        if (loan.getStatus().contentEquals("Belum terverifikasi")) {
+            holder.buttonVerify.setVisibility(View.VISIBLE);
+            holder.buttonVerify.setOnClickListener(v -> {
+                Intent moveDashboard = new Intent(holder.itemView.getContext(), DashboardActivity.class);
+                moveDashboard.putExtra("documentID", loan.getDocumentID());
+                holder.itemView.getContext().startActivity(moveDashboard);
+            });
+        } else {
+            holder.buttonVerify.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -46,6 +63,8 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textCode, textAmount, textDate, textStatus;
+        private Button buttonVerify;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,6 +73,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
             textAmount = itemView.findViewById(R.id.text_amount);
             textDate = itemView.findViewById(R.id.text_date);
             textStatus = itemView.findViewById(R.id.text_status);
+            buttonVerify = itemView.findViewById(R.id.btnVerify);
         }
     }
 }

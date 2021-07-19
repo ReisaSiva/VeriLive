@@ -32,9 +32,10 @@ public class ListLoan extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         String getCurrentUser = firebaseAuth.getCurrentUser().getUid();
-        firebaseFirestore.collection("Users").document(getCurrentUser).collection("Loan Information").get().addOnCompleteListener(task -> {
+        firebaseFirestore.collection("Loan Information").whereEqualTo("user_id", getCurrentUser).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 loanList = new ArrayList<>();
+
                 for (DocumentSnapshot documentSnapshot : task.getResult()) {
                     if (documentSnapshot != null) {
                         Loan loan = new Loan();
@@ -44,7 +45,6 @@ public class ListLoan extends AppCompatActivity {
                         loan.setName(documentSnapshot.getString("name"));
                         loan.setObjective(documentSnapshot.getString("objective"));
                         loan.setStatus(documentSnapshot.getString("status"));
-
                         loanList.add(loan);
                     }
                 }

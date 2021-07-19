@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -14,7 +13,6 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,8 +28,6 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -88,6 +84,8 @@ public class DashboardActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        String getLoanID = getIntent().getStringExtra("documentID");
+
         JoinBtn.setOnClickListener(v -> {
             String getSecretCode = secretCodeBox.getText().toString();
 
@@ -95,7 +93,7 @@ public class DashboardActivity extends AppCompatActivity {
                 secretCodeBox.setError("Secret Code tidak boleh kosong");
                 secretCodeBox.setFocusable(true);
             } else {
-                afterJoin(firebaseAuth, firebaseFirestore, getSecretCode, getLatitude, getLongitude);
+                afterJoin(firebaseAuth, firebaseFirestore, getSecretCode, getLatitude, getLongitude, getLoanID);
             }
         });
 
@@ -115,10 +113,7 @@ public class DashboardActivity extends AppCompatActivity {
     }
 
     public void logout() {
-        {
-            firebaseAuth.getInstance()
-                    .signOut();
-        }
+        FirebaseAuth.getInstance().signOut();
     }
 
     private boolean checkPermission() {
@@ -166,7 +161,7 @@ public class DashboardActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void afterJoin(FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore, String secretCode, String latitude, String longitude) {
+    private void afterJoin(FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore, String secretCode, String latitude, String longitude, String loanID) {
         // Push ke database then join jitsi
         String getCurrentUser = firebaseAuth.getCurrentUser().getUid();
         String getRandomUid = firebaseFirestore.collection("History Login").document().getId();
@@ -175,7 +170,8 @@ public class DashboardActivity extends AppCompatActivity {
         insertHistory.setLatitude(latitude);
         insertHistory.setLongitude(longitude);
         insertHistory.setCode(secretCode);
-//        InsertHistory Date
+        insertHistory.setCode(secretCode);
+        insertHistory.setLoanID(loanID);
         firebaseFirestore.collection("Users").document(getCurrentUser).collection("History Login").document(getRandomUid).set(insertHistory).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()

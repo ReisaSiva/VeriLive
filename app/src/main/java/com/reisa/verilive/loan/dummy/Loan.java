@@ -1,7 +1,31 @@
 package com.reisa.verilive.loan.dummy;
 
 public class Loan {
-    String name, amount, objective, date, code, status;
+    String name, amount, objective, date, code, status, user_id, currentDateTime, documentID;
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getCurrentDateTime() {
+        return currentDateTime;
+    }
+
+    public void setCurrentDateTime(String currentDateTime) {
+        this.currentDateTime = currentDateTime;
+    }
+
+    public String getDocumentID() {
+        return documentID;
+    }
+
+    public void setDocumentID(String documentID) {
+        this.documentID = documentID;
+    }
 
     public String getCode() {
         return code;
