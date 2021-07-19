@@ -45,6 +45,7 @@ public class ListLoan extends AppCompatActivity {
                         loan.setName(documentSnapshot.getString("name"));
                         loan.setObjective(documentSnapshot.getString("objective"));
                         loan.setStatus(documentSnapshot.getString("status"));
+                        loan.setDocumentID(documentSnapshot.getString("documentID"));
                         loanList.add(loan);
                     }
                 }
