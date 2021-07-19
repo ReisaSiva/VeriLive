@@ -19,6 +19,7 @@ import com.reisa.verilive.loan.dummy.Loan;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class AddLoanActivity extends AppCompatActivity {
@@ -50,7 +51,7 @@ public class AddLoanActivity extends AppCompatActivity {
         };
 
         loanDate.setOnClickListener(view -> new DatePickerDialog(AddLoanActivity.this, date, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH)).show());
-
+        backBtn.setOnClickListener(view -> onBackPressed());
         saveBtn.setOnClickListener(view -> {
             String getName = nameField.getText().toString();
             String getAmount = amountField.getText().toString();
@@ -60,6 +61,10 @@ public class AddLoanActivity extends AppCompatActivity {
             int max = 999999;
             int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
             String getCode = String.valueOf(random_int);
+            String getUser_id = firebaseAuth.getCurrentUser().getUid();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String getCurrentDateTime = dateFormat.format(new Date()); // Find todays date
+
 
             if (TextUtils.isEmpty(getName)) {
                 nameField.setError("Nama tidak boleh kosong");
@@ -74,7 +79,8 @@ public class AddLoanActivity extends AppCompatActivity {
                 objectiveField.setError("Tanggal tidak boleh kosong");
                 objectiveField.setFocusable(true);
             }else  {
-                afterJoin(firebaseAuth, firebaseFirestore, getName, getAmount, getObjective, getLoanDate, getCode);
+
+                afterJoin(firebaseAuth, firebaseFirestore, getName, getAmount, getObjective, getLoanDate, getCode, getUser_id, getCurrentDateTime);
             }
 
         });
@@ -87,11 +93,12 @@ public class AddLoanActivity extends AppCompatActivity {
     }
 
 
-    private void afterJoin(FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore, String name, String amount, String objective, String date, String code) {
+    private void afterJoin(FirebaseAuth firebaseAuth, FirebaseFirestore firebaseFirestore, String name, String amount, String objective, String date, String code, String user_id, String currentDateTime) {
         String getCurrentUser = firebaseAuth.getCurrentUser().getUid();
         String getRandomUid = firebaseFirestore.collection("Loan Information").document().getId();
         Loan insertLoan = new Loan();
-
+        insertLoan.setCurrentDateTime(currentDateTime);
+        insertLoan.setUser_id(user_id);
         insertLoan.setName(name);
         insertLoan.setAmount(amount);
         insertLoan.setObjective(objective);
@@ -107,7 +114,7 @@ public class AddLoanActivity extends AppCompatActivity {
                 .setDimAmount(0.5f)
                 .show();
 
-        firebaseFirestore.collection("Users").document(getCurrentUser).collection("Loan Information").document(getRandomUid).set(insertLoan).addOnCompleteListener(task -> {
+        firebaseFirestore.collection("Loan Information").document(getRandomUid).set(insertLoan).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 progressHUD.dismiss();
                 Toast.makeText(this, "Berhasil", Toast.LENGTH_SHORT).show();
